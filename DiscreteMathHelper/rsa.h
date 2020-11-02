@@ -7,6 +7,7 @@
 #pragma once
 #include <cmath>
 #include "euclidean_algorithm.h"
+#include "helper.h"
 
 class RSA
 {
@@ -16,10 +17,9 @@ public:
 	int getPrivateKey();
 	int encrypt(int m);
 	int decrypt(int c);
-	std::string getEncryptionFormula(int m);
-	std::string getDecryptionFormula(int c);
-	size_t mod(size_t n1, size_t n2);
-
+	std::string getEncryptionFormula(long long m);
+	std::string getDecryptionFormula(long long c);
+    
 private:
 	int p, q, e, d, N, phi;
 };
@@ -45,17 +45,17 @@ inline int RSA::getPrivateKey()
 
 int RSA::encrypt(int m)
 {
-	return mod(std::pow(m, e), N);
+	return Helper::mod(std::pow(m, e), N);
 }
 
-inline std::string RSA::getEncryptionFormula(int m)
+inline std::string RSA::getEncryptionFormula(long long m)
 {
 	std::stringstream ss;
 	ss << "c = " << m << "^" << e << " mod " << N;
 	return ss.str();
 }
 
-inline std::string RSA::getDecryptionFormula(int c)
+inline std::string RSA::getDecryptionFormula(long long c)
 {
 	std::stringstream ss;
 	ss << "m = " << c << "^" << d << " mod " << N;
@@ -64,10 +64,5 @@ inline std::string RSA::getDecryptionFormula(int c)
 
 int RSA::decrypt(int c)
 {
-	return mod(std::pow(c, d), N);
-}
-
-size_t RSA::mod(size_t n1, size_t n2)
-{
-	return n1 < 0 ? n1 % n2 + n2 : n1 % n2;
+	return Helper::mod(std::pow(c, d), N);
 }
