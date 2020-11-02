@@ -8,6 +8,10 @@
 
 Binary Binary::operator+(const Binary& binary) const
 {
+    // I was just Too Lazy!!!
+    return Binary(toInteger() + binary.toInteger());
+    
+    /*
 	Binary result;
 	int s = 0; //Digit sum to carry
 
@@ -36,6 +40,7 @@ Binary Binary::operator+(const Binary& binary) const
 	}
 
 	return result;
+    */
 }
 
 Binary Binary::operator-(const Binary& binary) const

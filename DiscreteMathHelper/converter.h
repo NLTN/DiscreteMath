@@ -13,7 +13,7 @@ class Converter
 public:
 	Converter() = delete;
 
-	static std::string fromDec(int dec, int toBase)
+	static std::string fromDec(long long dec, int toBase)
 	{
 		std::string result;
         

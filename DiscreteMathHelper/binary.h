@@ -16,7 +16,7 @@ class Binary
 {
 public:
 	Binary() { };
-	Binary(int num) : bin(Converter::fromDec(num, 2)) { };
+	Binary(long long num) : bin(Converter::fromDec(num, 2)) { };
 	Binary(std::string binStr)
 	{
 		Helper::removeWhiteSpaces(binStr);
