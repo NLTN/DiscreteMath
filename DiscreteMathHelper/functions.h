@@ -15,17 +15,24 @@
 
 using namespace std;
 
-void run_BinaryToDecAndHex()
+void func_BinaryToDecAndHex()
 {
     string input;
 	Helper::prompt("Enter a binary string: ", input);
-	Binary bin(input);
-    cout << endl;
-    printf("%-15s%-15s%s\n", "Binary", "Decimal", "Hex");
-	printf("%-15s%-15lli%s\n", input.c_str(), Converter::binaryStringToDec(input), Converter::fromDec(bin.toInteger(), 16).c_str());
+    if (Helper::isBinaryString(input))
+    {
+        Binary bin(input);
+        cout << endl;
+        printf("%-29s%-15s%s\n", "Binary", "Decimal", "Hex");
+        printf("%-29s%-15lli%s\n", input.c_str(), Converter::binaryStringToDec(input), Converter::fromDec(bin.toInteger(), 16).c_str());
+    }
+    else
+    {
+        cerr << "ERROR: Not a binary string" << endl;
+    }
 }
 
-void run_DecToHexAndBinary()
+void func_DecToHexAndBinary()
 {
     int input;
 	Helper::prompt("Enter an Integer: ", input);
@@ -34,7 +41,7 @@ void run_DecToHexAndBinary()
 	printf("%-15d%-15s%s\n", input, Converter::fromDec(input, 16).c_str(), Converter::fromDec(input, 2).c_str());
 }
 
-void run_HexToDecAndBinary()
+void func_HexToDecAndBinary()
 {
     string input;
 	Helper::prompt("Enter a Hex string: ", input);
@@ -46,54 +53,15 @@ void run_HexToDecAndBinary()
 	printf("%-15s%-15lli%s\n", input.c_str(), dec, bin.toString().c_str());
 }
 
-void run_Bin2Dec()
-{
-	string input;
-	Helper::prompt("Enter a binary string: ", input);
-	Binary bin(input);
-	cout << "Binary" << std::setw(10) << "Decimal" << endl;
-	cout << "-------------------------------------" << endl;
-	cout << input << std::setw(10) << bin.toInteger() << endl;
-}
-
-void run_Bin2Hex()
-{
-	string input;
-	Helper::prompt("Enter a binary string: ", input);
-	Binary bin(input);
-	cout << "\nBinary" << std::setw(17) << "Hexadecimal" << endl;
-	cout << "-------------------------------------" << endl;
-	cout << input << std::setw(17) << Converter::fromDec(bin.toInteger(), 16) << endl;
-}
-
-void run_Dec2Bin()
-{
-	int input;
-	Helper::prompt("Enter an Integer: ", input);
-	Binary bin(input);
-	cout << "\nDecimal" << std::setw(15) << "Binary" << endl;
-	cout << "-------------------------------------" << endl;
-	cout << input << std::setw(17) << bin.toString() << endl;
-}
-
-void run_Dec2Hex()
-{
-	int input;
-	Helper::prompt("Enter an Integer: ", input);
-	cout << "\nDecimal" << std::setw(15) << "Hexadecimal" << endl;
-	cout << "-------------------------------------" << endl;
-	cout << input << std::setw(17) << Converter::fromDec(input, 16) << endl;
-}
-
-void run_Mod()
+void func_mod()
 {
 	int num1, num2;
-	Helper::prompt("Enter an 1st number: ", num1);
-	Helper::prompt("Enter an 2nd number: ", num2);
+	Helper::prompt("Enter an integer n1: ", num1);
+	Helper::prompt("Enter an integer n2: ", num2);
 	cout << num1 << " mod " << num2 << " = " << Helper::mod(num1, num2) << endl;
 }
 
-void run_DecToOtherBaseSystem()
+void func_DecToOtherBaseSystem()
 {
 	int num, base;
 	Helper::prompt("Enter an Integer: ", num);
@@ -101,7 +69,7 @@ void run_DecToOtherBaseSystem()
 	cout << "\nAnswer: " << Converter::fromDec(num, base) << endl;
 }
 
-void run_OtherBaseSystemToDec()
+void func_OtherBaseSystemToDec()
 {
 	int input, base;
 	Helper::prompt("Enter an Integer: ", input);
@@ -109,22 +77,7 @@ void run_OtherBaseSystemToDec()
 	cout << "\nAnswer: " << Converter::toDec(input, base) << endl;
 }
 
-void run_Hex2Dec()
-{
-	string input;
-	Helper::prompt("Enter a Hex string: ", input);
-	cout << Converter::hexStringToDec(input) << endl;
-}
-
-void run_Hex2Bin()
-{
-	string input;
-	Helper::prompt("Enter a Hex string: ", input);
-	Binary bin(Converter::hexStringToDec(input));
-	cout << bin << endl;
-}
-
-void run_textToBinary()
+void func_textToBinary()
 {
 	string input;
 	int bits;
@@ -134,17 +87,24 @@ void run_textToBinary()
 	cout << numerical.textToBinary(input, bits) << endl;
 }
 
-void run_BinaryToText()
+void func_BinaryToText()
 {
 	string input;
-	int bits;
-	Helper::prompt("Enter a binary string: ", input);
-	Helper::prompt("Enter the number of bits per char: ", bits);
-	NumericalMessage numerical;
-	cout << numerical.binaryToText(input, bits) << endl;
+    Helper::prompt("Enter a binary string: ", input);
+    if (Helper::isBinaryString(input))
+    {
+        int bits;
+        Helper::prompt("Enter the number of bits per char: ", bits);
+        NumericalMessage numerical;
+        cout << numerical.binaryToText(input, bits) << endl;
+    }
+    else
+    {
+        cerr << "ERROR: Not a binary string" << endl;
+    }
 }
 
-void run_textToDecimal()
+void func_textToDecimal()
 {
 	string input;
 	int bits;
@@ -156,50 +116,50 @@ void run_textToDecimal()
 	cout << temp.toInteger() << endl;
 }
 
-void run_isPrime()
+void func_isPrime()
 {
 	int input;
 	Helper::prompt("Enter an Integer: ", input);
 	cout << (PrimeNumber::isPrime(input) ? "The number is Prime" : "The number is NOT Prime") << endl;
 }
 
-void run_PrimeFactorization()
+void func_PrimeFactorization()
 {
 	int input;
 	Helper::prompt("Enter an Integer: ", input);
 	cout << PrimeNumber::factorize(input) << endl;
 }
 
-void run_gcd()
+void func_gcd()
 {
 	int num1, num2, result;
-	Helper::prompt("Enter an Integer: ", num1);
-	Helper::prompt("Enter an Integer: ", num2);
+	Helper::prompt("Enter an integer n1: ", num1);
+	Helper::prompt("Enter an integer n2: ", num2);
 	result = Helper::gcd(num1, num2);
 	cout << "gcd(" << num1 << ", " << num2 << ") = " << PrimeNumber::factorize(result) << "= " << result << endl;
 }
 
-void run_lcm()
+void func_lcm()
 {
 	int num1, num2, result;
-	Helper::prompt("Enter an Integer: ", num1);
-	Helper::prompt("Enter an Integer: ", num2);
+	Helper::prompt("Enter an integer n1: ", num1);
+	Helper::prompt("Enter an integer n2: ", num2);
 
 	result = Helper::lcm(num1, num2);
 	cout << "lcm(" << num1 << ", " << num2 << ") = " << PrimeNumber::factorize(result) << "= " << result << endl;
 }
 
-void run_gcdExt()
+void func_gcdExtended()
 {
 	int num1, num2;
-	Helper::prompt("Enter an Integer: ", num1);
-	Helper::prompt("Enter an Integer: ", num2);
+	Helper::prompt("Enter an integer n1: ", num1);
+	Helper::prompt("Enter an integer n2: ", num2);
 	EuclideanAlgorithm algo;
 	auto result = algo.gcdExtended(num1, num2);
 	cout << "gcd(" << num1 << ", " << num2 << ") = " << result << " = " << result.gcd << endl;
 }
 
-void run_SimpleEncrypt()
+void func_SimpleEncrypt()
 {
 	int m, key, N;
 	SymmetricKeyCrypto crypto;
@@ -209,7 +169,7 @@ void run_SimpleEncrypt()
 	cout << crypto.encrypt(m, key, N) << endl;
 }
 
-void run_SimpleDecrypt()
+void func_SimpleDecrypt()
 {
 	int c, key, N;
 	SymmetricKeyCrypto crypto;
@@ -219,7 +179,7 @@ void run_SimpleDecrypt()
 	cout << crypto.decrypt(c, key, N) << endl;
 }
 
-void run_RSA_Encryption()
+void func_RSA_Encryption()
 {
 	int p, q, e, m;
 	Helper::prompt("Enter a prime number p: ", p);
@@ -231,7 +191,7 @@ void run_RSA_Encryption()
 	cout << rsa.getEncryptionFormula(m) << endl;
 }
 
-void run_RSA_EncryptText()
+void func_RSA_EncryptText()
 {
 	int p, q, e, bits;
 	string m;
@@ -250,7 +210,7 @@ void run_RSA_EncryptText()
 	cout << rsa.getEncryptionFormula((temp + temp2).toInteger()) << endl;
 }
 
-void run_RSA_Decryption()
+void func_RSA_Decryption()
 {
 	int p, q, e, c;
 	Helper::prompt("Enter a prime number p: ", p);
@@ -262,7 +222,7 @@ void run_RSA_Decryption()
 	cout << rsa.getDecryptionFormula(c) << endl;
 }
 
-void run_RSA_DecryptText()
+void func_RSA_DecryptText()
 {
 	int p, q, e, c;
 	Helper::prompt("Enter a prime number p: ", p);
@@ -282,7 +242,7 @@ void run_RSA_DecryptText()
 	cout << nMsg.binaryToText((bin - temp).toString(), bits);
 }
 
-void run_PrintRSAFormulas()
+void func_PrintRSAFormulas()
 {
 	cout << "N = p * q" << endl;
 	cout << "phi = (p - 1) * (q - 1)" << endl;
