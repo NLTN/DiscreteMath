@@ -166,7 +166,8 @@ void func_SimpleEncrypt()
 	Helper::prompt("Enter the plaintext as Integer m: ", m);
 	Helper::prompt("Enter a key as Integer k: ", key);
 	Helper::prompt("Enter a Prime number N: ", N);
-	cout << crypto.encrypt(m, key, N) << endl;
+    cout << endl << "Encryption formula: c = (" << m << " + " << key << ") % " << N;
+	cout << " = " << crypto.encrypt(m, key, N) << endl;
 }
 
 void func_SimpleDecrypt()
@@ -176,7 +177,8 @@ void func_SimpleDecrypt()
 	Helper::prompt("Enter the ciphertext as Integer c: ", c);
 	Helper::prompt("Enter a key as Integer k: ", key);
 	Helper::prompt("Enter a Prime number N: ", N);
-	cout << crypto.decrypt(c, key, N) << endl;
+    cout << endl  << "Decryption formula: m = (" << c << " - " << key << ") % " << N;
+	cout << " = " << crypto.decrypt(c, key, N) << endl;
 }
 
 void func_RSA_Encryption()
@@ -186,9 +188,9 @@ void func_RSA_Encryption()
 	Helper::prompt("Enter a prime number q: ", q);
 	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
-	cout << "Private Key: " << rsa.getPrivateKey() << endl;
-	Helper::prompt("Enter message as Integer: ", m);
-	cout << rsa.getEncryptionFormula(m) << endl;
+	Helper::prompt("Enter message as Integer m: ", m);
+	cout  << endl  << "Encryption formula: "
+        << rsa.getEncryptionFormula(m) << endl;
 }
 
 void func_RSA_EncryptText()
@@ -200,14 +202,13 @@ void func_RSA_EncryptText()
 	Helper::prompt("Enter a prime number for public key e: ", e);
 
 	RSA rsa(p, q, e);
-	cout << "Private Key: " << rsa.getPrivateKey() << endl;
-
-	Helper::prompt("Enter text message: ", m);
+	Helper::prompt("Enter plain text message: ", m);
 	Helper::prompt("Enter the number of bits per char: ", bits);
-	NumericalMessage numerical(0);
-	Binary temp = numerical.textToBinary(m, bits);
+	NumericalMessage nMsg;
+	Binary temp = nMsg.textToBinary(m, bits);
 	Binary temp2("1");
-	cout << rsa.getEncryptionFormula((temp + temp2).toInteger()) << endl;
+	cout << endl  << "Encryption formula: "
+        << rsa.getEncryptionFormula((temp + temp2).toInteger()) << endl;
 }
 
 void func_RSA_Decryption()
@@ -217,9 +218,9 @@ void func_RSA_Decryption()
 	Helper::prompt("Enter a prime number q: ", q);
 	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
-	cout << "Private Key: " << rsa.getPrivateKey() << endl;
-	Helper::prompt("Enter message as Integer: ", c);
-	cout << rsa.getDecryptionFormula(c) << endl;
+    Helper::prompt("Enter the cipher as Interger c: ", c);
+    cout << endl << "The private key is d = " << rsa.getPrivateKey() << endl;
+	cout << "Decryption formula: " << rsa.getDecryptionFormula(c) << endl;
 }
 
 void func_RSA_DecryptText()
@@ -229,13 +230,13 @@ void func_RSA_DecryptText()
 	Helper::prompt("Enter a prime number q: ", q);
 	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
-	cout << "Private Key: " << rsa.getPrivateKey() << endl;
-	Helper::prompt("Enter message as Integer: ", c);
-	cout << rsa.getDecryptionFormula(c) << endl;
+    Helper::prompt("Enter the cipher as Interger c: ", c);
+    cout << endl << "The private key is d = " << rsa.getPrivateKey() << endl;
+	cout << "Decryption formula: " << rsa.getDecryptionFormula(c) << endl;
 
 	int result, bits;
-	Helper::prompt("Enter a result: ", result);
-	Helper::prompt("Enter the bits per char: ", bits);
+	Helper::prompt("Enter the result of m: ", result);
+	Helper::prompt("Enter the number of bits per char: ", bits);
 	Binary bin(result);
 	Binary temp("1");
 	NumericalMessage nMsg;
