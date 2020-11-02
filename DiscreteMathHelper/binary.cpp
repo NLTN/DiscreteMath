@@ -45,13 +45,8 @@ Binary Binary::operator+(const Binary& binary) const
 
 Binary Binary::operator-(const Binary& binary) const
 {
-	// Too Lazy!!! 
-	// First, Convert the binary to Dec. Second, do the subtraction.
-	// Finally, Convert the number back to binary :-) :-) :-)
-
-	int a = Converter::toDec(std::stoi(bin), 2);
-	int b = Converter::toDec(std::stoi(binary.bin), 2);
-	return Binary(a - b);
+    // I was just Too Lazy!!!
+    return Binary(toInteger() - binary.toInteger());
 }
 
 long long Binary::toInteger() const
