@@ -222,9 +222,9 @@ void run_SimpleDecrypt()
 void run_RSA_Encryption()
 {
 	int p, q, e, m;
-	Helper::prompt("Enter p as Prime number: ", p);
-	Helper::prompt("Enter q as Prime number: ", q);
-	Helper::prompt("Enter public key as Prime number: ", e);
+	Helper::prompt("Enter a prime number p: ", p);
+	Helper::prompt("Enter a prime number q: ", q);
+	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
 	cout << "Private Key: " << rsa.getPrivateKey() << endl;
 	Helper::prompt("Enter message as Integer: ", m);
@@ -235,9 +235,9 @@ void run_RSA_EncryptText()
 {
 	int p, q, e, bits;
 	string m;
-	Helper::prompt("Enter p as Prime number: ", p);
-	Helper::prompt("Enter q as Prime number: ", q);
-	Helper::prompt("Enter public key as Prime number: ", e);
+	Helper::prompt("Enter a prime number p: ", p);
+	Helper::prompt("Enter a prime number q: ", q);
+	Helper::prompt("Enter a prime number for public key e: ", e);
 
 	RSA rsa(p, q, e);
 	cout << "Private Key: " << rsa.getPrivateKey() << endl;
@@ -253,9 +253,9 @@ void run_RSA_EncryptText()
 void run_RSA_Decryption()
 {
 	int p, q, e, c;
-	Helper::prompt("Enter p as Prime number: ", p);
-	Helper::prompt("Enter q as Prime number: ", q);
-	Helper::prompt("Enter public key as Prime number: ", e);
+	Helper::prompt("Enter a prime number p: ", p);
+	Helper::prompt("Enter a prime number q: ", q);
+	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
 	cout << "Private Key: " << rsa.getPrivateKey() << endl;
 	Helper::prompt("Enter message as Integer: ", c);
@@ -265,9 +265,9 @@ void run_RSA_Decryption()
 void run_RSA_DecryptText()
 {
 	int p, q, e, c;
-	Helper::prompt("Enter p as Prime number: ", p);
-	Helper::prompt("Enter q as Prime number: ", q);
-	Helper::prompt("Enter public key as Prime number: ", e);
+	Helper::prompt("Enter a prime number p: ", p);
+	Helper::prompt("Enter a prime number q: ", q);
+	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
 	cout << "Private Key: " << rsa.getPrivateKey() << endl;
 	Helper::prompt("Enter message as Integer: ", c);
