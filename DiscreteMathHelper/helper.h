@@ -51,6 +51,19 @@ public:
 		}
 	}
 
+    static bool isBinaryString(const std::string& str)
+    {
+        size_t i = 0;
+        size_t len = str.length();
+        
+        while (i < len && (str[i] == '0' || str[i] == '1'))
+        {
+            ++i;
+        }
+        
+        return i == len;
+    }
+    
 	static void removeWhiteSpaces(std::string& str)
 	{
 		size_t length = str.length();
