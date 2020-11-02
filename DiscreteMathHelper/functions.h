@@ -219,7 +219,7 @@ void func_RSA_Decryption()
 	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
     Helper::prompt("Enter the cipher as Interger c: ", c);
-    cout << endl << "The private key is d = " << rsa.getPrivateKey() << endl;
+    cout << endl << "Private key: d  = " << rsa.getPrivateKey() << endl;
 	cout << "Decryption formula: " << rsa.getDecryptionFormula(c) << endl;
 }
 
@@ -231,7 +231,7 @@ void func_RSA_DecryptText()
 	Helper::prompt("Enter a prime number for public key e: ", e);
 	RSA rsa(p, q, e);
     Helper::prompt("Enter the cipher as Interger c: ", c);
-    cout << endl << "The private key is d = " << rsa.getPrivateKey() << endl;
+    cout << endl << "Private key: d = " << rsa.getPrivateKey() << endl;
 	cout << "Decryption formula: " << rsa.getDecryptionFormula(c) << endl;
 
 	int result, bits;
