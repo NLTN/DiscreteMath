@@ -17,7 +17,8 @@ class NumericalMessage
 public:
 	NumericalMessage();
 	NumericalMessage(int shiftKey);
-	char numberToChar(int num) const;
+    int charToNumber(char c) const;
+    char numberToChar(int num) const;
 	std::string toNumberic(std::string message);
 	std::string toText(std::string cipher);
 	std::string textToBinary(std::string message, int bitsPerCharacter);
@@ -37,9 +38,14 @@ inline NumericalMessage::NumericalMessage(int shiftKey) : shift(shiftKey)
 {
 }
 
-inline char NumericalMessage::numberToChar(int num) const
+int NumericalMessage::charToNumber(char c) const
 {
-	return num + 'A';
+    return c - 'A';
+}
+
+char NumericalMessage::numberToChar(int num) const
+{
+	return num + 64;
 }
 
 inline std::string NumericalMessage::toNumberic(std::string message)
