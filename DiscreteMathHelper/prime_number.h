@@ -54,28 +54,23 @@ public:
 
 		return prime;
 	}
-    
-    // Assumptions: User may enter an odd/even number.
+
 	static bool isPrime(size_t num)
 	{
-        if (num == 2)
-        {
-            return true;
-        }
-        else if (num < 2 || num % 2 == 0)
-        {
-            return false;
-        }
+		if (num < 2)
+		{
+			return false;
+		}
 		else
 		{
-			int i = 3;
+			int i = 2;
 			int end = std::sqrt(num);
-            
+
 			while (i <= end && num % i != 0)
 			{
-				i += 2;
+				++i;
 			}
-            
+
 			return i > end;
 		}
 	};
