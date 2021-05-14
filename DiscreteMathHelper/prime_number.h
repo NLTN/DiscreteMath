@@ -57,18 +57,22 @@ public:
 
 	static bool isPrime(size_t num)
 	{
-		if (num < 2)
+        if (num == 2)
+        {
+            return true;
+        }
+		else if (num < 2 || num % 2 == 0)
 		{
 			return false;
 		}
 		else
 		{
-			int i = 2;
+			int i = 3;
 			int end = std::sqrt(num);
 
 			while (i <= end && num % i != 0)
 			{
-				++i;
+				i += 2;
 			}
 
 			return i > end;
